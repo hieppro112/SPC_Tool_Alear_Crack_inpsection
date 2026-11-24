@@ -1,0 +1,56 @@
+﻿<Window x:Class="ToolAleart_Inspection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToolAleart_Inspection"
+        mc:Ignorable="d"
+        Title="Tool Alert Crack"
+        WindowStyle="None" ResizeMode="NoResize" WindowState="Maximized"
+        Topmost="True" ShowInTaskbar="False">
+
+    <!-- Cảnh báo toàn màn hình; nền + chữ nhấp nháy đỏ/vàng -->
+    <Border x:Name="bdStatus" Background="Red" TextElement.Foreground="White">
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Thông tin máy / PO -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="28"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="PC: "/>
+                <TextBlock x:Name="txtPc" FontWeight="Bold"/>
+                <TextBlock Text="   |   Máy: "/>
+                <TextBlock x:Name="txtMachine" FontWeight="Bold"/>
+                <TextBlock Text="   |   PO: "/>
+                <TextBlock x:Name="txtPo" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- Nội dung cảnh báo (tự thu nhỏ nếu màn hình nhỏ) -->
+            <Viewbox Grid.Row="1" StretchDirection="DownOnly" Margin="0,24">
+                <TextBlock x:Name="txtStatus" Text="Đang kiểm tra..."
+                           FontSize="80" FontWeight="Bold" TextAlignment="Center"/>
+            </Viewbox>
+
+            <!-- Nút OK: chỉ bấm được sau khi đếm ngược xong -->
+            <Button Grid.Row="2" x:Name="btnOk" Content="OK (5)" IsEnabled="False"
+                    FontSize="40" FontWeight="Bold" Width="360" Height="110"
+                    HorizontalAlignment="Center" Click="BtnOk_Click"/>
+
+            <!-- Thời gian tự đóng / cập nhật / lỗi -->
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <TextBlock x:Name="txtCountdown" FontSize="22" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="txtUpdated" FontSize="14" Opacity="0.8" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="txtError" FontSize="14" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
