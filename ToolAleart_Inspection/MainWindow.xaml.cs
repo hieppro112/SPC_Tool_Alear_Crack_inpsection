@@ -46,10 +46,10 @@ namespace ToolAleart_Inspection
             InitializeComponent();
 
             string[] args = Environment.GetCommandLineArgs();
-            _pcName = (args.Length > 1 && !string.IsNullOrWhiteSpace(args[1])
-                        ? args[1]
-                        : Dns.GetHostName()).Trim().ToUpperInvariant();
-            //_pcName = "F2MNPC250042";
+            //_pcName = (args.Length > 1 && !string.IsNullOrWhiteSpace(args[1])
+            //            ? args[1]
+            //            : Dns.GetHostName()).Trim().ToUpperInvariant();
+            _pcName = "F2TAB18010172";
             txtPc.Text = _pcName;
 
             _blinkTimer = new DispatcherTimer { Interval = BlinkInterval };
