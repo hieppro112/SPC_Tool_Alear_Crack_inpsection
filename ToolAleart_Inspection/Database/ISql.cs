@@ -76,7 +76,7 @@ namespace ToolAleart_Inspection.Database
                             SELECT 1
                             FROM MANUFASPCPD.dbo.MANUFA_F_PD_DT_REQ_DTL1 DTL1
                             WHERE DTL1.AUFNR = @po
-                              AND DTL1.AFVC_LTXA1 LIKE '%Crack Check%'
+                              AND DTL1.AFVC_LTXA1 LIKE '%Crack%'
                           )
                           THEN 1 ELSE 0
                      END AS BIT) AS HasCrackCheck;";
